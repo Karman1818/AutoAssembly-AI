@@ -18,7 +18,7 @@ export function ModelViewer({ url, explosion = 0 }: { url: string, explosion?: n
 
     const meshList: THREE.Mesh[] = []
     
-    scene.traverse((child) => {
+    scene.traverse((child: THREE.Object3D) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh
         mesh.castShadow = true
