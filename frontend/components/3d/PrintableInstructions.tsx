@@ -47,7 +47,7 @@ export function PrintableInstructions({ data }: { data: AssemblyData | null }) {
       <div className="h-[297mm] flex flex-col items-center justify-center border-b-2 border-black p-12 mb-12 page-break-after-always">
         <h1 className="text-6xl font-black uppercase tracking-tighter mb-4 text-center">{data.title}</h1>
         <div className="w-64 h-2 bg-black mb-12" />
-        <div className="text-2xl font-light text-center mb-24 uppercase tracking-widest opacity-60">Instrukcja montażu IKEA Style</div>
+        <div className="text-2xl font-light text-center mb-24 uppercase tracking-widest opacity-60">IKEA-Style Assembly Instructions</div>
         
         {/* Simple visual of the product - using the first part as a placeholder if no main visual exists */}
         <div className="w-full flex justify-center py-20">
@@ -71,7 +71,7 @@ export function PrintableInstructions({ data }: { data: AssemblyData | null }) {
 
       {/* BOM Page */}
       <div className="min-h-[297mm] p-12 border-b border-zinc-200 mb-12">
-        <h2 className="text-3xl font-bold mb-10 uppercase">Wykaz części</h2>
+        <h2 className="text-3xl font-bold mb-10 uppercase">Bill of Materials</h2>
         <div className="grid grid-cols-2 gap-8">
           {data.parts_list?.map((part, idx) => (
             <div key={idx} className="flex items-center gap-6 border-b border-zinc-100 pb-4">
@@ -97,7 +97,7 @@ export function PrintableInstructions({ data }: { data: AssemblyData | null }) {
             <div className="flex items-start justify-between border-b-2 border-black pb-6 mb-12">
                <div>
                   <h3 className="text-4xl font-black uppercase leading-none">{step.title}</h3>
-                  <div className="text-zinc-500 text-sm font-medium mt-2">Krok {step.step_number} z {data.steps.length}</div>
+                  <div className="text-zinc-500 text-sm font-medium mt-2">Step {step.step_number} of {data.steps.length}</div>
                </div>
                <div className="text-6xl font-black bg-black text-white w-20 h-20 flex items-center justify-center">
                  {step.step_number}

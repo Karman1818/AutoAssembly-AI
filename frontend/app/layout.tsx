@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pl">
+    <html lang="en">
       <body className="font-sans antialiased text-slate-200 selection:bg-indigo-500/30">
         {children}
       </body>

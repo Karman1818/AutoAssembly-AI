@@ -75,7 +75,7 @@ export function AssemblyInstructions({
             </div>
             <div>
               <h2 className="text-xl md:text-2xl font-light tracking-tight text-white">{data.title}</h2>
-              <p className="text-zinc-500 text-xs md:text-sm font-light">Krok {currentStep + 1} z {steps.length}</p>
+              <p className="text-zinc-500 text-xs md:text-sm font-light">Step {currentStep + 1} of {steps.length}</p>
             </div>
           </div>
           
@@ -85,7 +85,7 @@ export function AssemblyInstructions({
               className="p-3 bg-zinc-800/50 hover:bg-zinc-700/80 border border-zinc-700/50 rounded-2xl text-zinc-300 hover:text-white transition-all shadow-sm flex items-center gap-2 px-5 group"
             >
               <Download className="w-4 h-4 group-hover:scale-110 transition-transform" />
-              <span className="text-sm font-medium">Pobierz PDF</span>
+              <span className="text-sm font-medium">Download PDF</span>
             </button>
             <button 
               onClick={onClose}
@@ -159,7 +159,7 @@ export function AssemblyInstructions({
             <div className="bg-zinc-900/40 border border-zinc-800/60 rounded-3xl p-6 h-full backdrop-blur-md">
               <h4 className="text-zinc-300 font-medium mb-6 flex items-center gap-2 uppercase tracking-widest text-xs opacity-70">
                 <Package className="w-4 h-4" />
-                Części do tego kroku
+                Parts for this step
               </h4>
               <div className="space-y-4">
                 {step.parts_used.map((p, idx) => (
@@ -199,7 +199,7 @@ export function AssemblyInstructions({
             }`}
           >
             <ChevronLeft className="w-5 h-5" />
-            <span className="font-medium">Poprzedni</span>
+            <span className="font-medium">Previous</span>
           </button>
 
           <div className="hidden md:flex items-center gap-2">
@@ -218,7 +218,7 @@ export function AssemblyInstructions({
               onClick={nextStep}
               className="flex items-center gap-2 px-10 py-4 bg-blue-600 hover:bg-blue-500 rounded-2xl text-white font-medium transition-all shadow-[0_0_20px_rgba(37,99,235,0.2)]"
             >
-              <span>Następny</span>
+              <span>Next</span>
               <ChevronRight className="w-5 h-5" />
             </button>
           ) : (
@@ -226,7 +226,7 @@ export function AssemblyInstructions({
               onClick={onClose}
               className="flex items-center gap-2 px-10 py-4 bg-green-600 hover:bg-green-500 rounded-2xl text-white font-medium transition-all shadow-[0_0_20px_rgba(22,163,74,0.2)]"
             >
-              <span>Gotowe!</span>
+              <span>Done!</span>
               <CheckCircle2 className="w-5 h-5" />
             </button>
           )}

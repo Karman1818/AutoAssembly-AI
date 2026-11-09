@@ -44,7 +44,7 @@ export function PartsList({ jobId }: { jobId: string }) {
     const getTypeDetails = (type: string) => {
         switch (type) {
             case 'panel': return { label: 'Panel', icon: Layers, color: 'text-orange-400', bg: 'bg-orange-500/10', border: 'border-orange-500/20' };
-            case 'connector': return { label: 'Łącznik', icon: Wrench, color: 'text-sky-400', bg: 'bg-sky-500/10', border: 'border-sky-500/20' };
+            case 'connector': return { label: 'Connector', icon: Wrench, color: 'text-sky-400', bg: 'bg-sky-500/10', border: 'border-sky-500/20' };
             default: return { label: 'Other', icon: Box, color: 'text-zinc-400', bg: 'bg-zinc-800/50', border: 'border-zinc-700/50' };
         }
     };
@@ -65,7 +65,7 @@ export function PartsList({ jobId }: { jobId: string }) {
                 <div className="flex items-center justify-between mb-2 px-2 cursor-pointer group" onClick={() => setIsOpen(!isOpen)}>
                     <h3 className="text-zinc-200 font-medium text-lg flex items-center gap-2 tracking-tight group-hover:text-white transition-colors">
                         <Box className="w-5 h-5 text-indigo-400" />
-                        Zestawienie Części (BOM)
+                        Bill of Materials (BOM)
                     </h3>
                     <div className="flex items-center gap-4">
                         <div className="text-zinc-500 text-sm font-light bg-zinc-900/50 px-3 py-1 rounded-full border border-zinc-800 hidden sm:block">

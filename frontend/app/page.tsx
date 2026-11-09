@@ -62,8 +62,8 @@ export default function Home() {
       setShowInstructions(true);
     } catch (e) {
       console.error(e);
-      const message = e instanceof Error ? e.message : 'Nie udało się wygenerować instrukcji.';
-      alert(`Błąd: ${message}`);
+      const message = e instanceof Error ? e.message : 'Failed to generate instructions.';
+      alert(`Error: ${message}`);
     } finally {
       setIsGenerating(false);
     }
@@ -137,7 +137,7 @@ export default function Home() {
                   ) : (
                     <Wand2 className="w-4 h-4 group-hover:rotate-12 transition-transform" />
                   )}
-                  {isGenerating ? 'Generowanie...' : 'Generuj AI Instrukcję'}
+                  {isGenerating ? 'Generating...' : 'Generate AI Instructions'}
                 </button>
 
                 {assemblyData && (
@@ -146,7 +146,7 @@ export default function Home() {
                     className="w-full py-3 bg-zinc-800 hover:bg-zinc-700 rounded-xl text-white text-sm font-medium transition-all border border-zinc-700/50 flex items-center justify-center gap-2"
                   >
                     <FileText className="w-4 h-4" />
-                    Pokaż Instrukcję
+                    Show Instructions
                   </button>
                 )}
               </div>
