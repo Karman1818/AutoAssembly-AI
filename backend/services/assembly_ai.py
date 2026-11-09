@@ -272,10 +272,19 @@ def _heuristic_steps(parts: Sequence[Dict[str, Any]]) -> List[Dict[str, Any]]:
     return steps[:10]
 
 
+def _is_configured_api_key(api_key: str | None) -> bool:
+    if not api_key:
+        return False
+    cleaned = api_key.strip()
+    if not cleaned or cleaned.startswith("your_") or "placeholder" in cleaned.lower():
+        return False
+    return True
+
+
 async def _call_gemini(prompt: str, image_path: str | None) -> Dict[str, Any]:
     api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    if not api_key:
-        raise ValueError("GEMINI_API_KEY environment variable is not set")
+    if not _is_configured_api_key(api_key):
+        raise ValueError("GEMINI_API_KEY environment variable is not configured")
 
     import google.generativeai as genai
     from PIL import Image
@@ -295,8 +304,8 @@ async def _call_gemini(prompt: str, image_path: str | None) -> Dict[str, Any]:
 
 async def _call_openrouter(prompt: str, image_path: str | None) -> Dict[str, Any]:
     api_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
-    if not api_key:
-        raise ValueError("OPENROUTER_API_KEY environment variable is not set")
+    if not _is_configured_api_key(api_key):
+        raise ValueError("OPENROUTER_API_KEY environment variable is not configured")
 
     model = os.environ.get("OPENROUTER_MODEL", "google/gemini-2.5-flash-preview")
     content: List[Dict[str, Any]] = [{"type": "text", "text": prompt}]
