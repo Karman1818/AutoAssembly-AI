@@ -1,5 +1,5 @@
 param(
-    [string]$StepFile = "C:\Users\MarceliKarman\Desktop\CAD-assembly-generator\backend\storage\f17f4d31-e0ce-4e5d-b667-a2decbe7ae92.step",
+    [string]$StepFile = "$PSScriptRoot\..\backend\storage\0983b31b-f10a-43c1-81f7-46ce7620beef.step",
     [string]$BackendUrl = "http://127.0.0.1:8000",
     [string]$FrontendUrl = "http://127.0.0.1:3000",
     [int]$BackendPort = 8000,

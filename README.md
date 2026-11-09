@@ -84,7 +84,7 @@ flowchart TD
 
 ```powershell
 # 1. Navigate to the project root
-cd CAD-assembly-generator
+cd AutoAssembly-AI
 
 # 2. Create and activate a virtual environment
 python -m venv backend/venv
@@ -109,7 +109,7 @@ In a new terminal window:
 
 ```powershell
 # 1. Navigate to the frontend directory
-cd CAD-assembly-generator/frontend
+cd AutoAssembly-AI/frontend
 
 # 2. Install Node.js packages
 npm install
