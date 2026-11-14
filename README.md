@@ -1,12 +1,28 @@
 # AutoAssembly AI 🛠️🤖
 ### Automated CAD STEP Processing, 3D Interactive Visualization & AI-Driven Assembly Instructions
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?logo=fastapi&logoColor=white)
-![Next.js](https://img.shields.io/badge/Next.js-16%2B-black?logo=nextdotjs&logoColor=white)
-![Three.js](https://img.shields.io/badge/Three.js-0.183%2B-black?logo=threedotjs&logoColor=white)
-![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.0%20Flash-4285F4?logo=googleai&logoColor=white)
+<div align="center">
+
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![CI](https://github.com/MarceliKarman/AutoAssembly-AI/actions/workflows/ci.yml/badge.svg)](https://github.com/MarceliKarman/AutoAssembly-AI/actions/workflows/ci.yml)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.100%2B-009688?logo=fastapi&logoColor=white)](https://fastapi.tiangolo.com/)
+[![Next.js](https://img.shields.io/badge/Next.js-16%2B-black?logo=nextdotjs&logoColor=white)](https://nextjs.org/)
+[![Three.js](https://img.shields.io/badge/Three.js-0.183%2B-black?logo=threedotjs&logoColor=white)](https://threejs.org/)
+[![Google Gemini](https://img.shields.io/badge/Google%20Gemini-2.0%20Flash-4285F4?logo=googleai&logoColor=white)](https://ai.google.dev/)
+
+</div>
+
+---
+
+## 🎥 Preview & Demo
+
+<div align="center">
+  <img src="assets/autoassembly.gif" alt="AutoAssembly AI Interactive Demo" width="100%" style="border-radius: 8px; box-shadow: 0 4px 20px rgba(0,0,0,0.25);" />
+  <p><em>Real-time CAD STEP parsing, 3D WebGL exploded view manipulation, parts cataloging, and automated step-by-step assembly generation.</em></p>
+</div>
+
+---
 
 **AutoAssembly AI** is an open-source web application designed to automatically parse CAD assembly models (`.step` / `.stp` files), extract individual parts and Bill of Materials (BOM), generate interactive 3D WebGL models (`.glb`), and create **IKEA-style step-by-step assembly manuals** using Large Language Models (Google Gemini) with full PDF export capabilities.
 
@@ -15,7 +31,7 @@
 ## 🌟 Key Features
 
 - 📐 **3D CAD Geometry Parsing**: Direct reading and processing of `.step` / `.stp` files powered by OpenCASCADE and CadQuery.
-- 📦 **Automated Bill of Materials (BOM)**: Intelligent part classification (panels, connectors, structural parts) with duplicate instance grouping.
+- 📦 **Automated Bill of Materials (BOM)**: Intelligent part classification (panels, connectors, structural parts) with duplicate instance grouping and dimensions.
 - 🖼️ **Vector 2D Blueprints**: Automatic generation of clean SVG technical drawings for every unique component.
 - 🌐 **Interactive 3D Web Viewer**: Real-time WebGL visualization powered by Three.js / React Three Fiber featuring an interactive **Exploded View Slider**.
 - 🤖 **AI Assembly Planner**: Leveraging Multimodal LLMs (Google Gemini / OpenRouter) to analyze spatial layouts and formulate step-by-step assembly sequences.
@@ -75,8 +91,8 @@ flowchart TD
 
 ### Prerequisites
 * Python `3.10` or higher
-* Node.js `18.0` or higher
-* Google Gemini API Key (Optional)
+* Node.js `18.0` or higher (Node 20+ recommended)
+* Google Gemini API Key (Optional — built-in heuristic fallback works out of the box)
 
 ---
 
@@ -93,7 +109,7 @@ python -m venv backend/venv
 # 3. Install Python dependencies
 pip install -r backend/requirements.txt
 
-# 4. Configure environment variables
+# 4. Configure environment variables (optional)
 cp backend/.env.example backend/.env
 
 # 5. Start the FastAPI server
@@ -137,14 +153,27 @@ OPENROUTER_MODEL=google/gemini-2.5-flash-preview
 
 ---
 
-## 🧪 End-to-End (E2E) Testing
+## 🧪 Testing & Verification
 
-A PowerShell script is provided to test the full processing pipeline automatically:
+### Automated Backend Tests (Unit Tests)
+The repository includes a comprehensive 32-test unit test suite covering classification, AI prompt creation, document generators, job management, and API endpoints:
 
 ```powershell
-.\scripts\run-e2e-test.ps1 -StepFile "path\to\your_model.step"
+# Run the test suite from the project root
+$env:PYTHONPATH="."
+.\backend\venv\Scripts\python -m unittest discover -s backend/tests -v
+```
+
+### End-to-End (E2E) Pipeline Script
+A PowerShell script is provided to test the full CAD-to-PDF processing pipeline end-to-end:
+
+```powershell
+.\scripts\run-e2e-test.ps1
 ```
 The script handles port listener cleanups, launches background servers, uploads the CAD file, verifies SSE progress streams, triggers AI instruction generation, and validates PDF downloads.
+
+### Continuous Integration (CI)
+GitHub Actions workflow is set up in `.github/workflows/ci.yml` running linting, typechecking, frontend build, Python compilation, and all unit tests on every pull request and push to `main`.
 
 ---
 
